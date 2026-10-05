@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel · Gimnasio Hierro 72</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <aside class="side">
+    <div class="logo">H72</div>
+    <nav>
+      <a class="active" href="#">Resumen</a>
+      <a href="#socios">Socios</a>
+      <a href="#" class="soon" title="Todavía no lo hago">Clases <small>pronto</small></a>
+    </nav>
+    <p class="side-foot">Gimnasio Hierro 72<br>Sede Calle 72</p>
+  </aside>
+
+  <main class="main">
+    <header class="head">
+      <div>
+        <h1>Hola, Marcela</h1>
+        <p class="muted" id="today"></p>
+      </div>
+      <button class="btn" id="resetBtn" title="Vuelve a los datos de ejemplo">Reiniciar datos demo</button>
+    </header>
+
+    <section class="kpis">
+      <div class="kpi">
+        <span class="kpi-label">Socios activos</span>
+        <strong id="kActive">0</strong>
+        <span class="kpi-sub" id="kActiveSub"></span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Recaudado últimos 30 días</span>
+        <strong id="kMoney">$0</strong>
+        <span class="kpi-sub">pagos registrados en el panel</span>
+      </div>
+      <div class="kpi kpi--warn">
+        <span class="kpi-label">Vencen en 7 días</span>
+        <strong id="kSoon">0</strong>
+        <span class="kpi-sub">hay que escribirles</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Entradas hoy</span>
+        <strong id="kToday">0</strong>
+        <span class="kpi-sub">según el registro de la puerta</span>
+      </div>
+    </section>
+
+    <section class="grid2">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>¿A qué hora se llena?</h2>
+          <span class="muted small">Promedio de entradas por hora, último mes</span>
+        </div>
+        <div class="chart" id="hourChart" role="img" aria-label="Entradas promedio por hora del día"></div>
+        <details class="table-view">
+          <summary>Ver como tabla</summary>
+          <table id="hourTable"></table>
+        </details>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Socios por plan</h2>
+          <span class="muted small">Solo activos</span>
+        </div>
+        <ul class="plans" id="plans"></ul>
+      </div>
+    </section>
+
+    <section class="panel" id="socios">
+      <div class="panel-head panel-head--row">
+        <h2>Socios</h2>
+        <div class="filters">
+          <input type="search" id="search" placeholder="Buscar por nombre…">
+          <select id="statusFilter">
+            <option value="all">Todos</option>
+            <option value="ok">Al día</option>
+            <option value="soon">Por vencer</option>
+            <option value="late">Vencidos</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="members">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Plan</th>
+              <th>Vence</th>
+              <th>Estado</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="memberRows"></tbody>
+        </table>
+      </div>
+      <p class="muted small empty" id="empty" hidden>No hay nadie con ese filtro.</p>
+    </section>
+
+    <footer class="foot">
+      Demo con datos inventados · hecho por
+      <a href="https://github.com/santiagohdezlamprea-source">Santiago H. Lamprea</a>
+    </footer>
+  </main>
+
+  <div class="tooltip" id="tooltip" hidden></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
